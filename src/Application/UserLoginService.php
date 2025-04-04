@@ -11,7 +11,18 @@ class UserLoginService
 
     public function manualLogin(User $user): void
     {
-        throw new RuntimeException("User already logged in");
+        if (in_array($user->getUserName(), $this->loggedUsers)) {
+            throw new RuntimeException("User already logged in");
+        }
+
+        $this->loggedUsers[] = $user->getUserName();
+    }
+
+
+
+    public function getLoggedUser(User $user): string
+    {
+        return $user->getUserName();
     }
 
 }
