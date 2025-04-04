@@ -2,13 +2,16 @@
 
 namespace UserLoginService\Application;
 
+use RuntimeException;
+use UserLoginService\Domain\User;
+
 class UserLoginService
 {
     private array $loggedUsers = [];
 
-    public function manualLogin(): string
+    public function manualLogin(User $user): void
     {
-        return "user logged";
+        throw new RuntimeException("User already logged in");
     }
 
 }
